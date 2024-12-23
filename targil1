@@ -28,22 +28,22 @@ public class Main {
         return ID;
     }
     public static boolean isIDValid(String number){
-            StringBuilder pattern = new StringBuilder();//creates new string with only 1 and 2
-        StringBuilder patternMultiplicationResult = new StringBuilder();
+            String pattern ="";//empty string
+        String patternMultiplicationResult ="";//empty string
             for (int i = 0; i < number.length(); i++) {
                 if (i % 2 == 0) {
-                    pattern.append('1');
+                    pattern+=('1');//fills string with 1 if its an even index
                 } else {
-                    pattern.append('2');
+                    pattern+=('2');//fills string with 2 if its an odd index
                 }
-                int idDigit = Character.getNumericValue(number.charAt(i));
-                int patternDigit = Character.getNumericValue(pattern.charAt(i));
+                int idDigit = Character.getNumericValue(number.charAt(i));//receives the digit from the string outside as a number value
+                int patternDigit = Character.getNumericValue(pattern.charAt(i));//receives the value number from the pattern string
                 int multiplicationPattern = idDigit * patternDigit;
                 if (multiplicationPattern> 9) {
-                    int sumDigit = (multiplicationPattern % 10) + (multiplicationPattern / 10);
+                    int sumDigit = (multiplicationPattern % 10) + (multiplicationPattern / 10);//sums the digits if its greater than 9
                     multiplicationPattern = sumDigit;
                 }
-                patternMultiplicationResult.append(multiplicationPattern);
+                patternMultiplicationResult+=(multiplicationPattern);//fills the string after multiplication (and the digit sum)
             }
                 int sum =0;
                 for(int i=0;i<patternMultiplicationResult.length();i++){
@@ -55,13 +55,13 @@ public class Main {
                 return false;
             }
             public static String validateID(String number){
-                StringBuilder pattern = new StringBuilder();
-                StringBuilder patternResult = new StringBuilder();
+                String pattern = new String();
+                String patternResult = new String();
                 for (int i = 0; i < number.length(); i++) {
                     if (i % 2 == 0) {
-                        pattern.append('1');
+                        pattern+=('1');
                     } else {
-                        pattern.append('2');
+                        pattern+=('2');
                     }
                     int idDigit = Character.getNumericValue(number.charAt(i));
                     int patternDigit = Character.getNumericValue(pattern.charAt(i));
@@ -70,7 +70,7 @@ public class Main {
                         int sumDigit = (multiplicationPattern % 10) + (multiplicationPattern / 10);
                         multiplicationPattern = sumDigit;
                     }
-                    patternResult.append(multiplicationPattern);
+                    patternResult+=(multiplicationPattern);
                 }
                 int sum =0;
                 for(int i=0;i<patternResult.length();i++){
